@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+package-lock.json
+.husky
+.vscode
+public/favicon.svg
+public/icons.svg
+public/og-image.png
+*.png
+*.jpg
+*.svg

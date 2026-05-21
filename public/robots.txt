@@ -1,0 +1,11 @@
+# Host
+Host: https://healix-ai.mochrks.dev/
+
+# Crawlers
+User-agent: *
+Allow: /
+Disallow: /dist/
+Disallow: /node_modules/
+
+# Sitemap Location
+Sitemap: https://healix-ai.mochrks.dev/sitemap.xml
