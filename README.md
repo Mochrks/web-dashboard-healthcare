@@ -1,4 +1,4 @@
-<h1 align="center">Healix AI | Intelligent Healthcare & Clinical Operations Dashboard</h1>
+<h1 align="center">Aether Health | Intelligent Healthcare & Clinical Operations Dashboard</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Vue.js-3.x-4fc08d?style=for-the-badge&logo=vue.js" alt="Vue.js Version" />
