@@ -1,5 +1,5 @@
 # Host
-Host: https://healix-ai.mochrks.dev/
+Host: https://web-dashboard-healthcare.vercel.app/
 
 # Crawlers
 User-agent: *
@@ -8,4 +8,4 @@ Disallow: /dist/
 Disallow: /node_modules/
 
 # Sitemap Location
-Sitemap: https://healix-ai.mochrks.dev/sitemap.xml
+Sitemap: https://web-dashboard-healthcare.vercel.app/sitemap.xml

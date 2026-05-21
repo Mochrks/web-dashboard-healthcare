@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Dashboards -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/ai-insights</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/ai-insights</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/realtime-monitor</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/realtime-monitor</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>always</changefreq>
     <priority>0.9</priority>
@@ -22,37 +22,37 @@
 
   <!-- Patient Management -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/patients</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/patients</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/patient-analytics</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/patient-analytics</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/medical-records</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/medical-records</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/admissions-discharges</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/admissions-discharges</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/appointments</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/appointments</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/telemedicine</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/telemedicine</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -60,31 +60,31 @@
 
   <!-- AI Diagnostics -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/ai-diagnosis</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/ai-diagnosis</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/medical-imaging</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/medical-imaging</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/lab-intelligence</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/lab-intelligence</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/predictive-risk</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/predictive-risk</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/clinical-decision</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/clinical-decision</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -92,37 +92,37 @@
 
   <!-- Hospital Operations -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/bed-management</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/bed-management</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>always</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/emergency-ops</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/emergency-ops</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>always</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/surgery-management</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/surgery-management</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/staff-operations</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/staff-operations</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/facility-monitoring</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/facility-monitoring</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/asset-tracking</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/asset-tracking</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>always</changefreq>
     <priority>0.75</priority>
@@ -130,19 +130,19 @@
 
   <!-- Pharmacy & Labs -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/pharmacy</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/pharmacy</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/inventory</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/inventory</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/lab-operations</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/lab-operations</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.75</priority>
@@ -150,19 +150,19 @@
 
   <!-- Finance & Insurance -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/billing</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/billing</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/claims</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/claims</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/financial-analytics</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/financial-analytics</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -170,13 +170,13 @@
 
   <!-- Security & Compliance -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/security-center</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/security-center</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/compliance</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/compliance</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -184,31 +184,31 @@
 
   <!-- Communications & Admin -->
   <url>
-    <loc>https://healix-ai.mochrks.dev/messages</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/messages</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>always</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/notifications</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/notifications</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>always</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/reports</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/reports</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/api-integrations</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/api-integrations</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://healix-ai.mochrks.dev/settings</loc>
+    <loc>https://web-dashboard-healthcare.vercel.app/settings</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
