@@ -108,57 +108,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useHospitalStore } from '@/stores/hospitalStore'
+import { ref } from 'vue'
 import PageHeader from '@/components/common/PageHeader.vue'
 import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
-import {
-  Activity,
-  Search,
-  Filter,
-  RefreshCw,
-  Users,
-  AlertTriangle,
-  Hotel,
-  FileText,
-  ClipboardCheck,
-  UserPlus,
-  FileSearch,
-  ArrowRightLeft,
-  UserCheck,
-  ShieldAlert,
-  HeartPulse,
-  FileHeart,
-  BriefcaseMedical,
-  Scissors,
-  ActivitySquare,
-  Pill,
-  Receipt,
-  Landmark,
-  BarChart3,
-  MessageSquareDashed,
-  Bell,
-  Shield,
-  Key,
-  FileSpreadsheet,
-  Webhook,
-  Settings
-} from 'lucide-vue-next'
+import { Activity, Search, Filter, RefreshCw, Landmark, Receipt, BarChart } from 'lucide-vue-next'
 
-const hospitalStore = useHospitalStore()
 const searchQuery = ref('')
 const isRefreshing = ref(false)
+
+const invoices = ref([
+  {
+    patient: 'Michael Chang',
+    service: 'Echocardiogram',
+    amount: '$1,200',
+    insurance: 'BlueCross',
+    status: 'CLEARED'
+  },
+  {
+    patient: 'Sarah Jenkins',
+    service: 'ER Visit Level 4',
+    amount: '$3,450',
+    insurance: 'Medicare',
+    status: 'PENDING'
+  },
+  {
+    patient: 'Robert Chen',
+    service: 'Neurology Consult',
+    amount: '$450',
+    insurance: 'Aetna',
+    status: 'DENIED'
+  }
+])
 
 const triggerRefresh = () => {
   isRefreshing.value = true
   setTimeout(() => {
     isRefreshing.value = false
   }, 600)
-}
-
-const handleEhr = (pat: any) => {
-  console.log('Viewing EHR for', pat.name)
 }
 </script>

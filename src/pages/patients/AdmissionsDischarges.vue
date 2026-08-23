@@ -137,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useHospitalStore } from '@/stores/hospitalStore'
 import PageHeader from '@/components/common/PageHeader.vue'
 import Card from '@/components/ui/Card.vue'
@@ -148,32 +148,10 @@ import {
   Search,
   Filter,
   RefreshCw,
-  Users,
-  AlertTriangle,
-  Hotel,
-  FileText,
-  ClipboardCheck,
   UserPlus,
-  FileSearch,
-  ArrowRightLeft,
-  UserCheck,
-  ShieldAlert,
-  HeartPulse,
-  FileHeart,
-  BriefcaseMedical,
-  Scissors,
-  ActivitySquare,
-  Pill,
-  Receipt,
-  Landmark,
-  BarChart3,
-  MessageSquareDashed,
-  Bell,
-  Shield,
-  Key,
-  FileSpreadsheet,
-  Webhook,
-  Settings
+  DoorOpen,
+  AlertTriangle,
+  Clock
 } from 'lucide-vue-next'
 
 const hospitalStore = useHospitalStore()
@@ -185,9 +163,5 @@ const triggerRefresh = () => {
   setTimeout(() => {
     isRefreshing.value = false
   }, 600)
-}
-
-const handleEhr = (pat: any) => {
-  console.log('Viewing EHR for', pat.name)
 }
 </script>

@@ -141,42 +141,18 @@ import PageHeader from '@/components/common/PageHeader.vue'
 import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
-import {
-  Activity,
-  Search,
-  Filter,
-  RefreshCw,
-  Users,
-  AlertTriangle,
-  Hotel,
-  FileText,
-  ClipboardCheck,
-  UserPlus,
-  FileSearch,
-  ArrowRightLeft,
-  UserCheck,
-  ShieldAlert,
-  HeartPulse,
-  FileHeart,
-  BriefcaseMedical,
-  Scissors,
-  ActivitySquare,
-  Pill,
-  Receipt,
-  Landmark,
-  BarChart3,
-  MessageSquareDashed,
-  Bell,
-  Shield,
-  Key,
-  FileSpreadsheet,
-  Webhook,
-  Settings
-} from 'lucide-vue-next'
+import { Activity, Search, Filter, RefreshCw, Users, AlertTriangle, Hotel } from 'lucide-vue-next'
 
 const hospitalStore = useHospitalStore()
 const searchQuery = ref('')
 const isRefreshing = ref(false)
+
+const filteredPatients = computed(() => {
+  if (!searchQuery.value) return hospitalStore.patients
+  return hospitalStore.patients.filter((p) =>
+    p.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  )
+})
 
 const triggerRefresh = () => {
   isRefreshing.value = true

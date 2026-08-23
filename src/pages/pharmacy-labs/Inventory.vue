@@ -93,8 +93,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useHospitalStore } from '@/stores/hospitalStore'
+import { ref } from 'vue'
 import PageHeader from '@/components/common/PageHeader.vue'
 import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'
@@ -104,46 +103,24 @@ import {
   Search,
   Filter,
   RefreshCw,
-  Users,
-  AlertTriangle,
-  Hotel,
-  FileText,
-  ClipboardCheck,
-  UserPlus,
-  FileSearch,
-  ArrowRightLeft,
-  UserCheck,
-  ShieldAlert,
-  HeartPulse,
-  FileHeart,
-  BriefcaseMedical,
+  PackageCheck,
   Scissors,
-  ActivitySquare,
-  Pill,
-  Receipt,
-  Landmark,
-  BarChart3,
-  MessageSquareDashed,
-  Bell,
-  Shield,
-  Key,
-  FileSpreadsheet,
-  Webhook,
-  Settings
+  AlertTriangle
 } from 'lucide-vue-next'
 
-const hospitalStore = useHospitalStore()
 const searchQuery = ref('')
 const isRefreshing = ref(false)
+
+const inventoryItems = ref([
+  { name: 'Surgical Mask N95', pct: 85, desc: 'High stock' },
+  { name: 'Nitrile Gloves', pct: 60, desc: 'Moderate stock' },
+  { name: 'Medical O2 Gas', pct: 84, desc: 'Tank capacity' }
+])
 
 const triggerRefresh = () => {
   isRefreshing.value = true
   setTimeout(() => {
     isRefreshing.value = false
   }, 600)
-}
-
-const handleEhr = (pat: any) => {
-  console.log('Viewing EHR for', pat.name)
 }
 </script>

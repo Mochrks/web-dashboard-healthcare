@@ -102,8 +102,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useHospitalStore } from '@/stores/hospitalStore'
+import { ref } from 'vue'
 import PageHeader from '@/components/common/PageHeader.vue'
 import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'
@@ -113,46 +112,25 @@ import {
   Search,
   Filter,
   RefreshCw,
-  Users,
-  AlertTriangle,
-  Hotel,
-  FileText,
-  ClipboardCheck,
-  UserPlus,
-  FileSearch,
-  ArrowRightLeft,
-  UserCheck,
-  ShieldAlert,
-  HeartPulse,
-  FileHeart,
-  BriefcaseMedical,
-  Scissors,
-  ActivitySquare,
-  Pill,
   Receipt,
-  Landmark,
-  BarChart3,
-  MessageSquareDashed,
-  Bell,
-  Shield,
-  Key,
-  FileSpreadsheet,
-  Webhook,
-  Settings
+  CheckCircle,
+  AlertTriangle,
+  Clock
 } from 'lucide-vue-next'
 
-const hospitalStore = useHospitalStore()
 const searchQuery = ref('')
 const isRefreshing = ref(false)
+
+const claimsList = ref([
+  { id: 'CLM-001', patient: 'Michael Chang', desc: 'Cardiac echo prior-auth', status: 'APPROVED' },
+  { id: 'CLM-002', patient: 'Sarah Jenkins', desc: 'Pulmonary function test', status: 'DENIED' },
+  { id: 'CLM-003', patient: 'Robert Chen', desc: 'Neurology consult', status: 'APPEALED' }
+])
 
 const triggerRefresh = () => {
   isRefreshing.value = true
   setTimeout(() => {
     isRefreshing.value = false
   }, 600)
-}
-
-const handleEhr = (pat: any) => {
-  console.log('Viewing EHR for', pat.name)
 }
 </script>

@@ -125,7 +125,7 @@ const router = createRouter({
 })
 
 // Dynamic SEO Title formatting
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const baseTitle = 'Aether Health'
   if (to.name) {
     // Format camelCase/PascalCase route names into spaced words (e.g., 'PatientAnalytics' -> 'Patient Analytics')
