@@ -81,19 +81,19 @@ const buttonStyles = computed(() => {
 
   switch (props.variant) {
     case 'medical':
-      return 'bg-med-teal hover:bg-med-teal/90 text-med-bg active:scale-95 shadow-teal-glow focus:ring-med-teal'
+      return 'bg-med-teal hover:bg-med-teal/90 text-white active:scale-95 shadow-apple-subtle hover:shadow-apple-hover focus:ring-med-teal'
     case 'ai':
-      return 'bg-med-purple hover:bg-med-purple/90 text-med-text active:scale-95 shadow-ai-glow focus:ring-med-purple'
+      return 'bg-med-purple hover:bg-med-purple/90 text-white active:scale-95 shadow-apple-subtle hover:shadow-apple-hover focus:ring-med-purple'
     case 'danger':
-      return 'bg-med-danger hover:bg-med-danger/90 text-med-text active:scale-95 focus:ring-med-danger'
+      return 'bg-med-danger hover:bg-med-danger/90 text-white active:scale-95 shadow-apple-subtle hover:shadow-apple-hover focus:ring-med-danger'
     case 'success':
-      return 'bg-med-success hover:bg-med-success/90 text-med-text active:scale-95 focus:ring-med-success'
+      return 'bg-med-success hover:bg-med-success/90 text-white active:scale-95 shadow-apple-subtle hover:shadow-apple-hover focus:ring-med-success'
     case 'outline':
-      return 'bg-transparent border border-med-border hover:border-med-primary/40 hover:bg-med-card-sec text-med-text active:scale-95 focus:ring-med-primary'
+      return 'bg-med-card border border-med-border hover:border-med-primary/40 hover:bg-med-card-sec text-med-text active:scale-95 focus:ring-med-primary shadow-apple-subtle hover:shadow-apple-hover'
     case 'ghost':
       return 'bg-transparent hover:bg-med-card-sec text-med-text-muted hover:text-med-text active:scale-95 focus:ring-med-primary'
-    default: // default is primary (cyan)
-      return 'bg-med-primary hover:bg-med-primary/90 text-med-bg active:scale-95 shadow-med-glow focus:ring-med-primary'
+    default: // default is primary
+      return 'bg-med-primary hover:bg-med-primary/90 text-white active:scale-95 shadow-apple-subtle hover:shadow-apple-hover focus:ring-med-primary'
   }
 })
 </script>

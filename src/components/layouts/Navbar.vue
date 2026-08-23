@@ -1,12 +1,12 @@
 <template>
   <nav
-    class="bg-med-card/75 backdrop-blur-md border-b border-med-border px-6 py-3.5 flex items-center justify-between select-none sticky top-0 z-30"
+    class="bg-pure-white/80 backdrop-blur-md border-b border-mist-gray px-6 py-4 flex items-center justify-between select-none sticky top-0 z-30"
   >
     <!-- Mobile Hamburger Toggle and Page Title -->
     <div class="flex items-center gap-4">
       <button
         type="button"
-        class="text-med-text-muted hover:text-med-text md:hidden p-1.5 hover:bg-med-card-sec rounded-xl transition-colors outline-none"
+        class="text-slate-mid hover:text-ink-black md:hidden p-1.5 hover:bg-mist-gray rounded-full transition-colors outline-none"
         @click="$emit('open-sidebar')"
       >
         <menu-icon class="w-5 h-5" />
@@ -14,26 +14,30 @@
 
       <!-- Active Page Indicator Context -->
       <div class="hidden sm:flex flex-col text-left">
-        <h1 class="text-sm font-bold text-med-text tracking-tight flex items-center gap-1.5">
+        <h1
+          class="text-sm font-semibold text-ink-black tracking-tight flex items-center gap-1.5 font-sans"
+        >
           {{ activePageName }}
         </h1>
-        <div class="flex items-center gap-1.5 text-[9px] font-mono text-med-text-muted mt-0.5">
+        <div
+          class="flex items-center gap-1.5 text-[9px] font-mono text-slate-mid mt-0.5 uppercase tracking-widest"
+        >
           <span>AETHER-CORE</span>
           <span>/</span>
-          <span class="text-med-primary">{{ activePageGroup }}</span>
+          <span class="text-forest-grove font-bold">{{ activePageGroup }}</span>
         </div>
       </div>
     </div>
 
     <!-- Search bar trigger (Ctrl+K) -->
     <div
-      class="hidden md:flex items-center gap-2.5 bg-neutral-100 hover:bg-neutral-200/80 dark:bg-neutral-950/30 dark:hover:bg-neutral-950/50 border border-med-border hover:border-med-primary/30 rounded-xl px-4 py-2 text-xs text-med-text-muted hover:text-med-text cursor-pointer transition-all duration-300 w-80 select-none shadow-inner"
+      class="hidden md:flex items-center gap-2.5 bg-mist-gray hover:bg-mist-gray/80 rounded-full px-4 py-2 text-[13px] text-slate-mid hover:text-ink-black cursor-pointer transition-all duration-300 w-80 select-none border border-transparent hover:border-graphite/10"
       @click="$emit('open-palette')"
     >
-      <search class="w-3.5 h-3.5" />
-      <span>Search departments, vitals, logs...</span>
+      <search class="w-4 h-4 shrink-0" />
+      <span class="font-sans truncate flex-1 text-left">Search departments, vitals, logs...</span>
       <span
-        class="ml-auto text-[9px] bg-med-card-sec px-1.5 py-0.5 rounded border border-med-border tracking-wider font-mono"
+        class="ml-auto text-[10px] bg-pure-white px-2 py-0.5 rounded-full border border-mist-gray tracking-wider font-mono font-medium text-slate-mid shrink-0"
         >⌘K</span
       >
     </div>
@@ -51,39 +55,39 @@
 
       <!-- Live Clinical Clock -->
       <div
-        class="hidden lg:flex items-center gap-2 bg-neutral-100 dark:bg-neutral-950/20 px-3.5 py-1.5 rounded-xl border border-med-border font-mono text-[10px] text-med-text-muted select-none"
+        class="hidden lg:flex items-center gap-2 bg-mist-gray px-3.5 py-1.5 rounded-full border border-transparent font-mono text-[10px] text-slate-mid select-none"
       >
-        <clock class="w-3 h-3 text-med-teal" />
+        <clock class="w-3 h-3 text-forest-grove" />
         <span>{{ systemTime }}</span>
       </div>
 
       <!-- Realtime Heartbeat Telemetry Status -->
       <div
-        class="hidden xl:flex items-center gap-2 bg-neutral-100 dark:bg-neutral-950/20 px-3.5 py-1.5 rounded-xl border border-med-border text-[9px] text-med-teal font-semibold font-mono select-none"
+        class="hidden xl:flex items-center gap-2 bg-mist-gray px-3.5 py-1.5 rounded-full border border-transparent text-[9px] text-forest-grove font-semibold font-mono select-none uppercase tracking-widest"
       >
-        <activity class="w-3.5 h-3.5 animate-pulse text-med-primary" />
-        <span>FHIR GATEWAY OK (72ms)</span>
+        <activity class="w-3.5 h-3.5 animate-pulse text-forest-grove" />
+        <span>FHIR GATEWAY OK</span>
       </div>
 
       <!-- Theme Toggler (Sun/Moon) -->
       <button
         type="button"
-        class="bg-med-card-sec border border-med-border text-med-text-muted hover:text-med-text p-2.5 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 outline-none"
+        class="bg-mist-gray text-slate-mid hover:text-ink-black p-2.5 rounded-full transition-all duration-300 outline-none"
         @click="toggleTheme"
         title="Toggle Theme"
       >
-        <sun v-if="isDark" class="w-4 h-4 text-med-warning" />
-        <moon v-else class="w-4 h-4 text-med-primary" />
+        <sun v-if="isDark" class="w-4 h-4 text-warning" />
+        <moon v-else class="w-4 h-4 text-forest-grove" />
       </button>
 
       <!-- Live Alerts Indicator Button -->
       <button
         type="button"
         :class="[
-          'relative p-2.5 rounded-xl border transition-all duration-300 outline-none hover:scale-105 active:scale-95',
+          'relative p-2.5 rounded-full transition-all duration-300 outline-none',
           activeAlarms > 0
-            ? 'bg-med-danger/10 border-med-danger/25 text-med-danger hover:shadow-alert-glow'
-            : 'bg-med-card-sec border-med-border text-med-text-muted hover:text-med-text'
+            ? 'bg-red-50 text-red-500'
+            : 'bg-mist-gray text-slate-mid hover:text-ink-black'
         ]"
         @click="$emit('toggle-notifications')"
       >
@@ -91,20 +95,20 @@
         <!-- Red flashing count indicator -->
         <span
           v-if="activeAlarms > 0"
-          class="absolute -top-1 -right-1 bg-med-danger text-med-bg text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center animate-pulse"
+          class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center animate-pulse shadow-sm"
         >
           {{ activeAlarms }}
         </span>
       </button>
 
-      <!-- AI Clinical Assistant Panel Button -->
+      <!-- AI Clinical Assistant Panel Button (Filled Dark Button style) -->
       <button
         type="button"
-        class="bg-med-purple hover:bg-med-purple/90 hover:shadow-ai-glow text-med-text p-2.5 rounded-xl flex items-center gap-1.5 border border-med-purple/35 transition-all duration-300 hover:scale-105 active:scale-95 outline-none font-semibold text-xs"
+        class="bg-ink-black hover:bg-pine-shadow text-pure-white px-5 py-2 rounded-full flex items-center gap-2 transition-all duration-300 outline-none font-medium text-[14px] shadow-btn-dark border border-ink-black"
         @click="$emit('toggle-ai')"
       >
-        <brain-circuit class="w-4 h-4 animate-pulse" />
-        <span class="hidden md:inline">Clinical AI</span>
+        <brain-circuit class="w-4 h-4" />
+        <span class="hidden md:inline">Ask Grace AI</span>
       </button>
     </div>
   </nav>

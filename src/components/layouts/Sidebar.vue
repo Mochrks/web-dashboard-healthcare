@@ -1,28 +1,51 @@
 <template>
   <div
-    class="flex flex-col h-full bg-med-card border-r border-med-border text-med-text select-none"
+    class="flex flex-col h-full bg-pure-white border-r border-mist-gray text-ink-black select-none"
   >
     <!-- Brand Logo header -->
-    <div class="px-6 py-5 border-b border-med-border flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
+    <div
+      :class="[
+        'py-5 border-b border-mist-gray flex items-center transition-all',
+        collapsed ? 'flex-col gap-4 justify-center px-0' : 'px-6 justify-between'
+      ]"
+    >
+      <div class="flex items-center gap-2.5 justify-center">
         <div
-          class="w-8 h-8 rounded-xl bg-med-primary flex items-center justify-center shadow-med-glow"
+          class="w-8 h-8 rounded-full bg-mist-gray flex items-center justify-center border border-graphite/10 shrink-0 mx-auto"
         >
-          <Hospital class="w-4 h-4 text-white" />
+          <Hospital class="w-4 h-4 text-forest-grove" />
         </div>
-        <div class="flex flex-col text-left">
-          <span class="text-xs font-extrabold tracking-tight text-med-text">AETHER HEALTH</span>
-          <span class="text-[9px] text-med-purple font-mono uppercase tracking-wider font-bold"
+        <div class="flex flex-col text-left truncate" v-if="!collapsed">
+          <span class="text-xs font-bold tracking-tight text-ink-black font-sans truncate"
+            >AETHER HEALTH</span
+          >
+          <span
+            class="text-[9px] text-forest-grove font-mono uppercase tracking-wider font-semibold truncate"
             >Clinical OS v3.5</span
           >
         </div>
       </div>
 
+      <!-- Collapse Toggle Button (Desktop) -->
+      <button
+        v-if="!isMobile"
+        type="button"
+        :class="[
+          'text-slate-mid hover:text-ink-black p-1.5 hover:bg-mist-gray rounded-full transition-colors',
+          collapsed ? 'mx-auto' : 'ml-auto'
+        ]"
+        @click="$emit('toggle-collapse')"
+        :title="collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'"
+      >
+        <panel-left-close v-if="!collapsed" class="w-4 h-4" />
+        <panel-left-open v-else class="w-4 h-4" />
+      </button>
+
       <!-- Close button on Mobile drawer -->
       <button
         v-if="isMobile"
         type="button"
-        class="text-med-text-muted hover:text-med-text md:hidden p-1 hover:bg-med-card-sec rounded"
+        class="text-slate-mid hover:text-ink-black md:hidden p-1 hover:bg-mist-gray rounded-full"
         @click="$emit('close-sidebar')"
       >
         <x class="w-4 h-4" />
@@ -30,26 +53,35 @@
     </div>
 
     <!-- Navigation Scrollable List -->
-    <div class="flex-1 overflow-y-auto px-4 py-6 flex flex-col gap-4 scrollbar-thin">
+    <div
+      :class="[
+        'flex-1 overflow-y-auto py-6 flex flex-col gap-4 scrollbar-thin',
+        collapsed ? 'px-2' : 'px-4'
+      ]"
+    >
       <div v-for="group in menuGroups" :key="group.name" class="flex flex-col">
         <!-- Group Header Toggle -->
         <button
+          v-if="!collapsed"
           type="button"
-          class="flex items-center justify-between w-full py-1.5 px-2.5 text-[10px] font-bold text-med-text-muted hover:text-med-text uppercase tracking-widest outline-none transition-colors mb-1 rounded-md hover:bg-med-card-sec/40"
+          class="flex items-center justify-between w-full py-1.5 px-2.5 text-[10px] font-bold text-slate-mid hover:text-ink-black uppercase tracking-widest outline-none transition-colors mb-1 rounded-md hover:bg-mist-gray/40"
           @click="toggleGroup(group.name)"
         >
           <span>{{ group.name }}</span>
           <component
             :is="isGroupCollapsed(group.name) ? ChevronRight : ChevronDown"
-            class="w-3 h-3 text-med-text-muted"
+            class="w-3 h-3 text-slate-mid"
           />
         </button>
+        <div v-else class="h-4"></div>
+        <!-- Spacer when collapsed -->
 
         <!-- Group Nested Navigation Items -->
         <transition name="sidebar-slide">
           <div
-            v-show="!isGroupCollapsed(group.name)"
-            class="flex flex-col gap-0.5 pl-1.5 overflow-hidden transition-all duration-300"
+            v-show="collapsed || !isGroupCollapsed(group.name)"
+            class="flex flex-col gap-1 overflow-hidden transition-all duration-300 mt-1"
+            :class="collapsed ? 'px-0' : 'pl-1.5'"
           >
             <router-link
               v-for="item in group.items"
@@ -60,25 +92,32 @@
             >
               <div
                 :class="[
-                  'flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold cursor-pointer border transition-all duration-200 outline-none',
+                  'flex items-center rounded-full text-[13px] font-medium cursor-pointer transition-all duration-200 outline-none relative group',
+                  collapsed ? 'justify-center mx-auto w-10 h-10 px-0' : 'justify-between px-3 py-2',
                   isActive
-                    ? 'bg-med-primary/10 border-med-primary/20 text-med-primary shadow-sm'
-                    : 'border-transparent text-med-text-muted hover:text-med-text hover:bg-med-card-sec/70'
+                    ? 'bg-mist-gray text-ink-black shadow-sm border border-graphite/5'
+                    : 'text-slate-mid hover:text-ink-black hover:bg-mist-gray'
                 ]"
                 @click="handleNav(navigate)"
+                @mouseenter="showTooltip($event, item.label)"
+                @mouseleave="hideTooltip"
               >
-                <div class="flex items-center gap-2.5">
-                  <component :is="item.icon" class="w-3.5 h-3.5" />
-                  <span>{{ item.label }}</span>
+                <div :class="['flex items-center', collapsed ? 'justify-center' : 'gap-3']">
+                  <component :is="item.icon" class="w-4 h-4 shrink-0" />
+                  <span v-if="!collapsed" class="truncate">{{ item.label }}</span>
                 </div>
 
-                <!-- Badge for warning metrics (e.g. Sepsis warnings or live counts) -->
+                <!-- Badge for warning metrics -->
                 <span
-                  v-if="item.alertCount > 0"
-                  class="bg-med-danger/10 border border-med-danger/25 text-med-danger font-mono text-[9px] px-1.5 py-0.5 rounded-md animate-pulse font-bold"
+                  v-if="item.alertCount > 0 && !collapsed"
+                  class="bg-red-50 text-red-500 font-mono text-[10px] px-2 py-0.5 rounded-full animate-pulse font-bold"
                 >
                   {{ item.alertCount }}
                 </span>
+                <span
+                  v-if="item.alertCount > 0 && collapsed"
+                  class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 border-2 border-pure-white rounded-full animate-pulse"
+                ></span>
               </div>
             </router-link>
           </div>
@@ -88,25 +127,72 @@
 
     <!-- Active Doctor Profile Footer -->
     <div
-      class="p-4 border-t border-med-border bg-med-card-sec/30 dark:bg-neutral-950/30 flex items-center justify-between select-none"
+      class="p-4 border-t border-mist-gray bg-pure-white flex items-center justify-between select-none relative"
     >
-      <div class="flex items-center gap-2.5">
-        <div class="relative">
+      <div
+        :class="[
+          'flex items-center cursor-pointer hover:bg-mist-gray p-1.5 rounded-xl transition-colors w-full group',
+          collapsed ? 'justify-center' : 'gap-2.5'
+        ]"
+        @click="showUserMenu = !showUserMenu"
+      >
+        <div class="relative shrink-0">
           <div
-            class="w-8 h-8 rounded-full bg-med-card-sec border border-med-border flex items-center justify-center font-bold text-xs text-med-teal uppercase"
+            class="w-8 h-8 rounded-full bg-mist-gray border border-mist-gray flex items-center justify-center font-bold text-xs text-forest-grove uppercase"
           >
             RC
           </div>
           <span
-            class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-med-success border-2 border-med-bg"
+            class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-forest-grove border-[1.5px] border-pure-white group-hover:border-mist-gray transition-colors"
           ></span>
         </div>
-        <div class="flex flex-col text-left">
-          <span class="text-xs font-semibold text-med-text">Dr. Evelyn Carter</span>
-          <span class="text-[10px] text-med-text-muted font-normal">Attending Physician (ED)</span>
+        <div class="flex flex-col text-left truncate" v-if="!collapsed">
+          <span class="text-xs font-semibold text-ink-black font-sans truncate"
+            >Dr. Evelyn Carter</span
+          >
+          <span class="text-[10px] text-slate-mid font-normal truncate"
+            >Attending Physician (ED)</span
+          >
         </div>
       </div>
+
+      <!-- User Menu Popover -->
+      <transition name="fade">
+        <div
+          v-if="showUserMenu"
+          :class="[
+            'absolute bottom-16 bg-pure-white border border-mist-gray rounded-xl shadow-floating py-2 z-50 flex flex-col',
+            collapsed ? 'left-full ml-4 w-48' : 'left-4 right-4'
+          ]"
+        >
+          <button
+            class="flex items-center gap-2 px-4 py-2 text-xs font-medium text-ink-black hover:bg-mist-gray text-left w-full transition-colors"
+          >
+            <user-cog class="w-4 h-4 text-slate-mid" />
+            Account Settings
+          </button>
+          <div class="h-px bg-mist-gray w-full my-1"></div>
+          <button
+            class="flex items-center gap-2 px-4 py-2 text-xs font-medium text-red-500 hover:bg-red-50 text-left w-full transition-colors"
+          >
+            <log-out class="w-4 h-4" />
+            Sign Out
+          </button>
+        </div>
+      </transition>
     </div>
+    <!-- Teleported Custom Tooltip -->
+    <teleport to="body">
+      <transition name="fade">
+        <div
+          v-if="activeTooltip.show"
+          class="fixed z-[100] px-2.5 py-1.5 bg-ink-black text-pure-white text-[11px] font-semibold rounded-md whitespace-nowrap shadow-floating pointer-events-none"
+          :style="{ top: activeTooltip.top + 'px', left: '90px', transform: 'translateY(-50%)' }"
+        >
+          {{ activeTooltip.label }}
+        </div>
+      </transition>
+    </teleport>
   </div>
 </template>
 
@@ -147,15 +233,40 @@ import {
   Bell,
   FileSpreadsheet,
   Webhook,
-  Settings
+  Settings,
+  PanelLeftClose,
+  PanelLeftOpen,
+  LogOut,
+  UserCog
 } from 'lucide-vue-next'
 
-defineProps({
-  isMobile: { type: Boolean, default: false }
+const props = defineProps({
+  isMobile: { type: Boolean, default: false },
+  collapsed: { type: Boolean, default: false }
 })
 
-const emit = defineEmits(['close-sidebar'])
+const emit = defineEmits(['close-sidebar', 'toggle-collapse'])
 const hospitalStore = useHospitalStore()
+
+const showUserMenu = ref(false)
+
+// Custom Tooltip State
+const activeTooltip = ref({ show: false, label: '', top: 0 })
+
+function showTooltip(e: MouseEvent, label: string) {
+  if (!props.collapsed) return
+  const target = e.currentTarget as HTMLElement
+  const rect = target.getBoundingClientRect()
+  activeTooltip.value = {
+    show: true,
+    label,
+    top: rect.top + rect.height / 2
+  }
+}
+
+function hideTooltip() {
+  activeTooltip.value.show = false
+}
 
 // Track Collapsible Sidebar States per Nav Group
 const collapsedGroups = ref<Record<string, boolean>>({
@@ -315,5 +426,17 @@ const menuGroups = computed(() => [
 .sidebar-slide-enter-from,
 .sidebar-slide-leave-to {
   max-height: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(4px);
 }
 </style>

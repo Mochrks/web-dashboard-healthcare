@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-black/90 border border-med-border rounded-xl p-4 overflow-hidden flex flex-col gap-2 relative"
+    class="bg-med-card border border-med-border rounded-xl p-4 overflow-hidden flex flex-col gap-2 relative shadow-apple-subtle"
   >
     <!-- Grid overlay and header information -->
     <div class="flex items-center justify-between text-xs font-semibold select-none z-10">
@@ -21,7 +21,7 @@
 
     <!-- Main Canvas Telemetry -->
     <div
-      class="relative w-full h-[100px] bg-neutral-950/40 rounded-lg border border-neutral-900 overflow-hidden"
+      class="relative w-full h-[100px] bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-med-border/50 overflow-hidden"
     >
       <canvas ref="canvasRef" class="w-full h-full block"></canvas>
     </div>
@@ -118,7 +118,8 @@ onMounted(() => {
     ctx.clearRect(0, 0, width, height)
 
     // 1. Draw Clinical Millimeter Grid
-    ctx.strokeStyle = 'rgba(25, 40, 50, 0.25)'
+    const isDark = document.documentElement.classList.contains('dark')
+    ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)'
     ctx.lineWidth = 0.5
 
     // Vertical grid lines (every 10px)
@@ -137,7 +138,7 @@ onMounted(() => {
     }
 
     // Heavy grid lines (every 50px)
-    ctx.strokeStyle = 'rgba(25, 45, 55, 0.45)'
+    ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)'
     ctx.lineWidth = 0.8
     for (let x = 0; x < width; x += 50) {
       ctx.beginPath()
@@ -160,9 +161,10 @@ onMounted(() => {
       ctx.lineJoin = 'round'
       ctx.lineCap = 'round'
 
-      // Create glowing neon shadows
-      ctx.shadowColor = props.color
-      ctx.shadowBlur = 8
+      // Create soft shadows instead of neon glow
+      ctx.shadowColor = isDark ? props.color : 'rgba(0,0,0,0.1)'
+      ctx.shadowBlur = isDark ? 6 : 4
+      ctx.shadowOffsetY = isDark ? 0 : 2
 
       ctx.beginPath()
 

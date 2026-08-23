@@ -1,63 +1,77 @@
 <template>
   <div class="flex flex-col gap-6 select-none">
     <!-- Header and Weather Correlation banner -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-2">
       <div>
-        <h2 class="text-2xl font-extrabold text-med-text tracking-tight flex items-center gap-2">
+        <h2
+          class="text-[40px] font-serif font-normal text-ink-black tracking-tight flex items-center gap-2 leading-tight"
+        >
           Clinical Operations Command
         </h2>
-        <p class="text-xs text-med-text-muted mt-1">
+        <p class="text-sm text-slate-mid mt-2 font-sans">
           Realtime healthcare analytics, predictive risk logs, and facility sensor networks.
         </p>
       </div>
 
       <!-- Live weather correlation metric -->
       <div
-        class="flex items-center gap-3 bg-med-card border border-med-border rounded-xl px-4 py-2 text-xxs text-med-text-muted hover:border-med-primary/30 transition-all duration-300"
+        class="flex items-center gap-3 bg-pure-white border border-transparent rounded-xl px-4 py-3 text-xxs text-slate-mid shadow-floating transition-all duration-300"
       >
-        <thermometer class="w-4 h-4 text-med-primary animate-pulse" />
+        <thermometer class="w-4 h-4 text-forest-grove animate-pulse" />
         <div class="text-left font-sans">
-          <div class="font-bold text-med-text text-xxs">WEATHER-ADMISSION RATIO</div>
-          <div>74°F Rain • Suspected Respiratory Spike (+12.4%)</div>
+          <div class="font-bold text-forest-grove text-[10px] tracking-widest uppercase mb-0.5">
+            WEATHER-ADMISSION RATIO
+          </div>
+          <div class="text-xs text-ink-black">74°F Rain • Suspected Respiratory Spike (+12.4%)</div>
         </div>
       </div>
     </div>
 
     <!-- Tier 1: Core KPI Card Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <Card title="ICU Occupancy Rate" subtitle="Active intensive beds" :hover-glow="true">
-        <template #title-icon><hotel class="w-4 h-4 text-med-teal" /></template>
-        <div class="flex items-baseline justify-between mt-2">
-          <span class="text-4xl font-extrabold tracking-tighter text-med-teal font-mono">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Card title="ICU Occupancy Rate" subtitle="Active intensive beds" :hover-glow="false">
+        <template #title-icon>
+          <div
+            class="w-8 h-8 rounded-full bg-mist-gray flex items-center justify-center shrink-0 border border-graphite/10"
+          >
+            <hotel class="w-4 h-4 text-forest-grove" />
+          </div>
+        </template>
+        <div class="flex items-baseline justify-between mt-4">
+          <span class="text-[40px] font-semibold tracking-tight text-ink-black">
             {{ stats.icuOccupancyRate }}%
           </span>
           <Badge variant="stable" :dot="true" :pulse="true">Nominal</Badge>
         </div>
         <div
-          class="w-full bg-neutral-950/40 rounded-full h-1.5 mt-4 border border-med-border/40 overflow-hidden"
+          class="w-full bg-neutral-100 dark:bg-neutral-900 rounded-full h-1.5 mt-5 overflow-hidden"
         >
           <div
             class="bg-med-teal h-full rounded-full transition-all duration-500"
             :style="{ width: `${stats.icuOccupancyRate}%` }"
           ></div>
         </div>
-        <div
-          class="flex items-center justify-between text-[10px] text-med-text-muted mt-2 font-mono"
-        >
+        <div class="flex items-center justify-between text-xs text-med-text-muted mt-3">
           <span>{{ stats.occupiedBeds }} Occupied</span>
           <span>{{ stats.totalBeds }} Total Beds</span>
         </div>
       </Card>
 
       <Card title="Emergency ER Queue" subtitle="Active ESI triage" :hover-glow="true">
-        <template #title-icon><alert-triangle class="w-4 h-4 text-med-warning" /></template>
-        <div class="flex items-baseline justify-between mt-2">
-          <span class="text-4xl font-extrabold tracking-tighter text-med-warning font-mono">
+        <template #title-icon>
+          <div
+            class="w-8 h-8 rounded-full bg-med-warning/10 flex items-center justify-center shrink-0"
+          >
+            <alert-triangle class="w-4 h-4 text-med-warning" />
+          </div>
+        </template>
+        <div class="flex items-baseline justify-between mt-4">
+          <span class="text-4xl font-semibold tracking-tight text-med-text">
             {{ stats.emergencyPatientsCount }}
           </span>
           <Badge variant="esi2" :dot="true">Surge Level</Badge>
         </div>
-        <div class="flex items-center gap-1.5 mt-4 text-[10px] text-med-text-muted font-mono">
+        <div class="flex items-center gap-2 mt-5 text-xs text-med-text-muted">
           <span class="w-2 h-2 rounded-full bg-med-danger animate-pulse"></span>
           <span>{{ stats.triage1_2 }} Critical Cases (ESI 1-2)</span>
         </div>
@@ -68,11 +82,17 @@
         subtitle="Telemetry warning triggers"
         :hover-glow-danger="stats.activeCriticalAlerts > 0"
       >
-        <template #title-icon><bell class="w-4 h-4 text-med-danger" /></template>
-        <div class="flex items-baseline justify-between mt-2">
+        <template #title-icon>
+          <div
+            class="w-8 h-8 rounded-full bg-med-danger/10 flex items-center justify-center shrink-0"
+          >
+            <bell class="w-4 h-4 text-med-danger" />
+          </div>
+        </template>
+        <div class="flex items-baseline justify-between mt-4">
           <span
             :class="[
-              'text-4xl font-extrabold tracking-tighter font-mono transition-all duration-300',
+              'text-4xl font-semibold tracking-tight transition-all duration-300',
               stats.activeCriticalAlerts > 0 ? 'text-med-danger animate-pulse' : 'text-med-text'
             ]"
           >
@@ -85,7 +105,7 @@
             {{ stats.activeCriticalAlerts > 0 ? 'Action Req' : 'Clear' }}
           </Badge>
         </div>
-        <div class="text-[10px] text-med-text-muted mt-4 font-mono truncate">
+        <div class="text-xs text-med-text-muted mt-5 truncate">
           {{
             stats.activeCriticalAlerts > 0
               ? 'ICU Arrhythmia Alert Active'
@@ -94,17 +114,22 @@
         </div>
       </Card>
 
-      <Card title="Admissions & Discharges" subtitle="Patient turnaround today" :hover-glow="true">
-        <template #title-icon><activity class="w-4 h-4 text-med-primary" /></template>
-        <div class="flex items-baseline justify-between mt-2">
-          <span class="text-4xl font-extrabold tracking-tighter text-med-primary font-mono">
-            {{ stats.dailyAdmissions }}/{{ stats.dailyDischarges }}
+      <Card title="Admissions Flow" subtitle="Patient turnaround today" :hover-glow="true">
+        <template #title-icon>
+          <div
+            class="w-8 h-8 rounded-full bg-med-primary/10 flex items-center justify-center shrink-0"
+          >
+            <activity class="w-4 h-4 text-med-primary" />
+          </div>
+        </template>
+        <div class="flex items-baseline justify-between mt-4">
+          <span class="text-4xl font-semibold tracking-tight text-med-text">
+            {{ stats.dailyAdmissions
+            }}<span class="text-2xl text-med-text-muted">/{{ stats.dailyDischarges }}</span>
           </span>
           <Badge variant="info">Net +4</Badge>
         </div>
-        <div
-          class="flex items-center justify-between text-[10px] text-med-text-muted mt-4 font-mono"
-        >
+        <div class="flex items-center justify-between text-xs text-med-text-muted mt-5">
           <span>Admitted: {{ stats.dailyAdmissions }}</span>
           <span>Discharged: {{ stats.dailyDischarges }}</span>
         </div>
@@ -143,15 +168,15 @@
         </div>
 
         <div
-          class="bg-med-danger/5 border border-med-danger/20 rounded-xl p-3.5 mt-4 flex items-center justify-between gap-4 animate-pulse"
+          class="bg-red-50 border border-red-100 rounded-xl p-4 mt-5 flex items-center justify-between gap-4 animate-pulse shadow-sm"
         >
           <div class="flex items-center gap-3">
-            <alert-triangle class="w-5 h-5 text-med-danger" />
-            <div class="text-left select-none text-xxs font-normal">
-              <span class="font-bold text-med-text block"
+            <alert-triangle class="w-5 h-5 text-red-500" />
+            <div class="text-left select-none font-sans">
+              <span class="font-bold text-ink-black block text-xs"
                 >CRITICAL TELEMETRY TRIGGER: Sarah Jenkins</span
               >
-              <span class="text-med-text-muted"
+              <span class="text-slate-mid text-xs"
                 >Ventricular Tachycardia burst detected. Sepsis onset score stands at 7 (High risk
                 of decompensation).</span
               >
@@ -235,11 +260,11 @@
           <div
             v-for="or in hospitalStore.operatingRooms"
             :key="or.id"
-            class="p-4 bg-med-card-sec/45 border border-med-border rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-med-primary/30 transition-all duration-300 select-none text-left"
+            class="p-4 bg-neutral-50 dark:bg-neutral-900 border border-transparent hover:border-med-border rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 select-none text-left hover:shadow-apple-subtle hover:-translate-y-0.5"
           >
             <div class="flex flex-col gap-1">
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-med-text">{{ or.name }}</span>
+                <span class="text-[13px] font-semibold text-med-text">{{ or.name }}</span>
                 <Badge
                   :variant="
                     or.status === 'Intra-Op'
@@ -262,15 +287,15 @@
             </div>
 
             <!-- Timing progress bar -->
-            <div v-if="or.status === 'Intra-Op'" class="w-full md:w-48 flex flex-col gap-1">
+            <div v-if="or.status === 'Intra-Op'" class="w-full md:w-48 flex flex-col gap-1.5">
               <div
-                class="flex items-center justify-between font-mono text-[9px] text-med-text-muted"
+                class="flex items-center justify-between font-mono text-[10px] text-med-text-muted"
               >
                 <span>Progress</span>
                 <span>{{ or.timeElapsedMin }}/{{ or.estimatedTimeMin }} min</span>
               </div>
               <div
-                class="w-full bg-neutral-950/40 border border-med-border/40 rounded-full h-1.5 overflow-hidden"
+                class="w-full bg-neutral-200 dark:bg-neutral-800 rounded-full h-1.5 overflow-hidden"
               >
                 <div
                   class="bg-med-danger h-full rounded-full transition-all duration-500"
@@ -279,15 +304,15 @@
               </div>
             </div>
 
-            <div v-else-if="or.status === 'Cleaning'" class="w-full md:w-48 flex flex-col gap-1">
+            <div v-else-if="or.status === 'Cleaning'" class="w-full md:w-48 flex flex-col gap-1.5">
               <div
-                class="flex items-center justify-between font-mono text-[9px] text-med-text-muted"
+                class="flex items-center justify-between font-mono text-[10px] text-med-text-muted"
               >
                 <span>Sanitization cycle</span>
                 <span>{{ or.timeElapsedMin }}/30 min</span>
               </div>
               <div
-                class="w-full bg-neutral-950/40 border border-med-border/40 rounded-full h-1.5 overflow-hidden animate-pulse"
+                class="w-full bg-neutral-200 dark:bg-neutral-800 rounded-full h-1.5 overflow-hidden animate-pulse"
               >
                 <div
                   class="bg-med-warning h-full rounded-full transition-all duration-500"

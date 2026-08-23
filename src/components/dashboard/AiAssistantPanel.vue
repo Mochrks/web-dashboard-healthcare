@@ -10,7 +10,7 @@
           v-for="sug in quickSuggestions"
           :key="sug.prompt"
           type="button"
-          class="text-xxs px-2.5 py-1.5 rounded-lg bg-med-card-sec border border-med-border hover:border-med-purple/40 text-med-text-muted hover:text-med-text hover:shadow-ai-glow transition-all duration-300 text-left"
+          class="text-xs px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-med-border/50 hover:border-med-purple/40 text-med-text-muted hover:text-med-text hover:shadow-apple-subtle hover:-translate-y-0.5 transition-all duration-300 text-left"
           @click="sendQuickPrompt(sug.prompt)"
         >
           {{ sug.label }}
@@ -28,7 +28,7 @@
         :class="[
           'flex flex-col gap-1 p-3.5 rounded-xl border max-w-[85%] text-xs leading-relaxed transition-all duration-300',
           msg.isAi
-            ? 'bg-med-card border-med-purple/20 text-med-text mr-auto shadow-ai-glow/5'
+            ? 'bg-med-card border-med-purple/20 text-med-text mr-auto shadow-apple-subtle'
             : 'bg-med-primary/10 border-med-primary/20 text-med-primary ml-auto'
         ]"
       >
@@ -77,7 +77,7 @@
         v-model="inputValue"
         type="text"
         placeholder="Ask the Clinical AI (e.g. 'check sepsis score')..."
-        class="flex-1 bg-med-card-sec border border-med-border focus:border-med-purple rounded-xl py-3 px-4 text-xs text-med-text placeholder-med-text-muted outline-none transition-colors pr-10"
+        class="flex-1 bg-neutral-50 dark:bg-neutral-900 border border-med-border/50 focus:border-med-purple/50 rounded-xl py-3 px-4 text-xs text-med-text placeholder-med-text-muted outline-none transition-colors pr-10 focus:shadow-apple-subtle"
         :disabled="isTyping"
       />
       <button

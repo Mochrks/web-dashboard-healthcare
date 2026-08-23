@@ -1,12 +1,11 @@
 <template>
   <div
     :class="[
-      'rounded-2xl border transition-all duration-300 relative overflow-hidden',
-      secondary ? 'bg-med-card-sec border-med-border' : 'bg-med-card border-med-border',
-      hoverGlow ? 'hover:border-med-primary/40 hover:shadow-med-glow' : '',
-      hoverGlowAi ? 'hover:border-med-purple/40 hover:shadow-ai-glow' : '',
-      hoverGlowDanger ? 'hover:border-med-danger/40 hover:shadow-alert-glow' : '',
-      interactive ? 'cursor-pointer transform hover:-translate-y-0.5' : '',
+      'rounded-cards border transition-all duration-300 relative overflow-hidden shadow-floating bg-pure-white border-transparent',
+      secondary ? 'bg-mist-gray' : '',
+      hoverGlow || hoverGlowAi || hoverGlowDanger || interactive
+        ? 'hover:-translate-y-1 hover:border-graphite/10'
+        : '',
       customClass
     ]"
     @click="$emit('click', $event)"
@@ -20,17 +19,19 @@
     <!-- Card Header -->
     <div
       v-if="$slots.header || title || subtitle"
-      class="p-5 border-b border-med-border/50 flex items-center justify-between gap-4"
+      class="p-6 border-b border-med-border/50 flex items-center justify-between gap-4"
     >
       <div>
         <h3
           v-if="title"
-          class="text-base font-semibold text-med-text tracking-tight flex items-center gap-2"
+          class="text-xl font-semibold text-ink-black tracking-tight flex items-center gap-2 font-sans"
         >
           <slot name="title-icon"></slot>
           {{ title }}
         </h3>
-        <p v-if="subtitle" class="text-xs text-med-text-muted mt-1 font-normal">{{ subtitle }}</p>
+        <p v-if="subtitle" class="text-[14px] text-slate-mid mt-1 font-normal font-sans">
+          {{ subtitle }}
+        </p>
       </div>
       <div>
         <slot name="header-action"></slot>
@@ -38,14 +39,14 @@
     </div>
 
     <!-- Card Content -->
-    <div :class="['p-5', contentClass]">
+    <div :class="['p-6', contentClass]">
       <slot></slot>
     </div>
 
     <!-- Card Footer -->
     <div
       v-if="$slots.footer"
-      class="p-5 border-t border-med-border/50 bg-neutral-50 dark:bg-black/10 flex items-center justify-end gap-2"
+      class="p-6 border-t border-med-border/50 bg-neutral-50 dark:bg-black/10 flex items-center justify-end gap-2"
     >
       <slot name="footer"></slot>
     </div>

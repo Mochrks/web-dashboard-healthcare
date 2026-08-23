@@ -22,7 +22,7 @@
         <!-- Timeline Marker Point -->
         <span
           :class="[
-            'absolute -left-[26px] top-1.5 w-3 h-3 rounded-full border-2 border-med-bg transition-all duration-300 group-hover:scale-125 z-10',
+            'absolute -left-[26px] top-1.5 w-3 h-3 rounded-full border-2 border-med-card transition-all duration-300 group-hover:scale-125 z-10 shadow-sm',
             markerColors[item.type]
           ]"
         ></span>
@@ -30,7 +30,7 @@
         <!-- Event Body -->
         <div class="flex flex-col gap-1">
           <div class="flex items-center justify-between gap-4">
-            <span class="text-xs font-semibold text-med-text flex items-center gap-1.5">
+            <span class="text-[13px] font-medium text-med-text flex items-center gap-2">
               <component :is="item.icon" class="w-3.5 h-3.5 text-med-text-muted" />
               {{ item.title }}
             </span>

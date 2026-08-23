@@ -1,8 +1,16 @@
 <template>
-  <div class="min-h-screen bg-med-bg text-med-text font-sans flex relative overflow-hidden">
+  <div class="min-h-screen bg-pure-white text-ink-black font-sans flex relative overflow-hidden">
     <!-- Desktop Sidebar (Hidden on mobile/tablet) -->
-    <aside class="hidden md:block w-64 xl:w-72 flex-shrink-0 h-screen sticky top-0">
-      <Sidebar />
+    <aside
+      :class="[
+        'hidden md:block flex-shrink-0 h-screen sticky top-0 transition-all duration-300 z-40',
+        isDesktopSidebarCollapsed ? 'w-20' : 'w-64 xl:w-72'
+      ]"
+    >
+      <Sidebar
+        :collapsed="isDesktopSidebarCollapsed"
+        @toggle-collapse="isDesktopSidebarCollapsed = !isDesktopSidebarCollapsed"
+      />
     </aside>
 
     <!-- Mobile Sidebar Drawer Overlay -->
@@ -31,7 +39,7 @@
       />
 
       <!-- Primary Router View Container -->
-      <main class="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-med-bg-alt">
+      <main class="flex-1 overflow-y-auto p-6 md:p-8 lg:p-12 bg-mist-gray">
         <router-view v-slot="{ Component }">
           <transition name="route-fade" mode="out-in">
             <component :is="Component" />
@@ -67,7 +75,7 @@
 
         <div
           v-if="activeAlarms.length === 0"
-          class="py-12 flex flex-col items-center justify-center text-center gap-3 border border-dashed border-med-border rounded-2xl bg-med-card-sec/30 dark:bg-neutral-950/10"
+          class="py-12 flex flex-col items-center justify-center text-center gap-3 border border-dashed border-med-border rounded-2xl bg-med-card-sec/30"
         >
           <check-circle class="w-8 h-8 text-med-teal animate-pulse" />
           <div>
@@ -155,6 +163,7 @@ import { CheckCircle } from 'lucide-vue-next'
 const hospitalStore = useHospitalStore()
 
 const isSidebarOpen = ref(false)
+const isDesktopSidebarCollapsed = ref(false)
 const isPaletteOpen = ref(false)
 const isNotificationsOpen = ref(false)
 const isAiOpen = ref(false)

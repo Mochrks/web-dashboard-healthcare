@@ -2,93 +2,141 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @config "../tailwind.config.js";
 
-/* CSS theme variables for Light and Dark modes (Shadcn OKLCH palette) */
+/* CSS theme variables for Light and Dark modes */
 :root {
-  --radius: 0.5rem;
-  --background: oklch(1 0 180);
-  --foreground: oklch(0.185 0.027 193.683);
-  --muted: oklch(0.951 0.009 164.028);
-  --muted-foreground: oklch(0.476 0.021 163.088);
-  --popover: oklch(1 0 180);
-  --popover-foreground: oklch(0.185 0.027 193.683);
-  --card: oklch(0.992 0 161.565);
-  --card-foreground: oklch(0.167 0.024 193.817);
-  --border: oklch(0.924 0.001 195.953);
-  --input: oklch(0.924 0.001 195.953);
-  --primary: oklch(0.661 0.077 194.014);
-  --primary-foreground: oklch(0 0 0);
-  --secondary: oklch(0.649 0.1 159.316);
-  --secondary-foreground: oklch(0 0 0);
-  --accent: oklch(0.571 0.074 247.622);
-  --accent-foreground: oklch(1 0 180);
-  --destructive: oklch(0.488 0.195 28.981);
-  --destructive-foreground: oklch(0.968 0.015 18.598);
-  --ring: oklch(0.661 0.077 194.014);
-  --chart-1: oklch(0.661 0.077 194.014);
-  --chart-2: oklch(0.649 0.1 159.316);
-  --chart-3: oklch(0.571 0.074 247.622);
-  --chart-4: oklch(0.675 0.101 159.479);
-  --chart-5: oklch(0.67 0.083 193.9);
+  /* Grove AI Color Tokens */
+  --color-forest-grove: #0b835c;
+  --color-pine-shadow: #1c2b27;
+  --color-ink-black: #1c1c1e;
+  --color-graphite: #303033;
+  --color-slate-mid: #676768;
+  --color-mist-gray: #eff1f6;
+  --color-pure-white: #ffffff;
+  --color-shadow-smoke: #bfbfbf;
 
-  /* Map clinical semantic tokens to the shadcn OKLCH palette */
+  --radius: 0.75rem; /* 12px for buttons/inputs */
+
+  /* Core Colors */
+  --background: var(--color-pure-white);
+  --foreground: var(--color-ink-black);
+  --muted: var(--color-mist-gray);
+  --muted-foreground: var(--color-slate-mid);
+  --popover: var(--color-pure-white);
+  --popover-foreground: var(--color-ink-black);
+  --card: var(--color-mist-gray);
+  --card-foreground: var(--color-ink-black);
+  --border: var(--color-mist-gray);
+  --input: var(--color-mist-gray);
+
+  /* Brand/Status Colors */
+  --primary: var(--color-forest-grove);
+  --primary-dark: #096b4a; /* slightly darker green for hover */
+  --primary-light: #e0f2ec;
+  --primary-foreground: var(--color-pure-white);
+  --secondary: var(--color-ink-black);
+  --secondary-foreground: var(--color-pure-white);
+  --accent: var(--color-forest-grove);
+  --accent-foreground: var(--color-pure-white);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --ring: var(--color-forest-grove);
+
+  /* Chart Colors (Updated to match premium feel) */
+  --chart-1: #2563eb;
+  --chart-2: var(--color-forest-grove);
+  --chart-3: #f59e0b;
+  --chart-4: #06b6d4;
+  --chart-5: #6366f1;
+
+  /* Semantic Clinical Tokens (Legacy mappings for gradual refactor) */
   --med-bg: var(--background);
-  --med-bg-alt: oklch(0.975 0.002 195.953);
-  --med-card: var(--card);
+  --med-bg-alt: var(--color-mist-gray); /* Mist gray used for secondary surface */
+  --med-card: var(--color-pure-white); /* Cards often white on mist-gray bg */
   --med-card-sec: var(--muted);
-  --med-border: var(--border);
+  --med-border: #e2e4eb; /* Slightly darker than mist-gray for subtle borders */
   --med-text: var(--foreground);
   --med-text-muted: var(--muted-foreground);
 
   --med-primary: var(--primary);
-  --med-teal: var(--secondary);
-  --med-purple: var(--accent);
-  --med-success: var(--chart-2);
-  --med-warning: oklch(0.795 0.15 76);
+  --med-primary-dark: var(--primary-dark);
+  --med-primary-light: var(--primary-light);
+  --med-teal: var(
+    --color-forest-grove
+  ); /* Map teal to forest-grove for now to avoid multiple hues */
+  --med-purple: var(--color-ink-black);
+  --med-success: var(--color-forest-grove);
+  --med-warning: #f59e0b;
   --med-danger: var(--destructive);
+  --med-info: var(--color-forest-grove);
 }
 
 .dark {
-  --radius: 0.5rem;
-  --background: oklch(0.097 0.008 194.878);
-  --foreground: oklch(0.993 0.001 195.956);
-  --muted: oklch(0.189 0.014 162.245);
-  --muted-foreground: oklch(0.734 0.019 163.598);
-  --popover: oklch(0.097 0.008 194.878);
-  --popover-foreground: oklch(0.993 0.001 195.956);
-  --card: oklch(0.123 0.01 194.878);
-  --card-foreground: oklch(1 0 180);
-  --border: oklch(0.271 0.002 195.83);
-  --input: oklch(0.271 0.002 195.83);
-  --primary: oklch(0.661 0.077 194.014);
-  --primary-foreground: oklch(0 0 0);
-  --secondary: oklch(0.649 0.1 159.316);
-  --secondary-foreground: oklch(0 0 0);
-  --accent: oklch(0.571 0.074 247.622);
-  --accent-foreground: oklch(1 0 180);
-  --destructive: oklch(0.638 0.223 26.986);
-  --destructive-foreground: oklch(1 0 180);
-  --ring: oklch(0.661 0.077 194.014);
-  --chart-1: oklch(0.661 0.077 194.014);
-  --chart-2: oklch(0.649 0.1 159.316);
-  --chart-3: oklch(0.571 0.074 247.622);
-  --chart-4: oklch(0.675 0.101 159.479);
-  --chart-5: oklch(0.67 0.083 193.9);
+  /* Grove AI Color Tokens - Elegant Dark Mode Interpretation */
+  --color-forest-grove: #0b835c; /* Accent stays consistent */
+  --color-pine-shadow: #111827; /* Darker accent hover */
 
-  /* Map clinical semantic tokens to the shadcn OKLCH palette */
+  /* Text and contrast tokens */
+  --color-ink-black: #fafafa; /* Main text becomes white/light gray */
+  --color-graphite: #3f3f46; /* Subtle dark borders */
+  --color-slate-mid: #a1a1aa; /* Muted text */
+
+  /* Surface tokens */
+  --color-mist-gray: #18181b; /* Cards and slightly elevated surfaces */
+  --color-pure-white: #09090b; /* Main canvas / background */
+  --color-shadow-smoke: #000000;
+
+  --radius: 0.75rem;
+
+  /* Core Colors */
+  --background: var(--color-pure-white);
+  --foreground: var(--color-ink-black);
+  --muted: var(--color-mist-gray);
+  --muted-foreground: var(--color-slate-mid);
+  --popover: var(--color-mist-gray);
+  --popover-foreground: var(--color-ink-black);
+  --card: var(--color-mist-gray);
+  --card-foreground: var(--color-ink-black);
+  --border: var(--color-graphite);
+  --input: var(--color-mist-gray);
+
+  /* Brand/Status Colors */
+  --primary: var(--color-forest-grove);
+  --primary-dark: #096b4a;
+  --primary-light: rgba(11, 131, 92, 0.15);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-mist-gray);
+  --secondary-foreground: var(--color-ink-black);
+  --accent: var(--color-forest-grove);
+  --accent-foreground: #ffffff;
+  --destructive: #f87171;
+  --destructive-foreground: #ffffff;
+  --ring: var(--color-forest-grove);
+
+  /* Chart Colors */
+  --chart-1: #3b82f6;
+  --chart-2: var(--color-forest-grove);
+  --chart-3: #fbbf24;
+  --chart-4: #22d3ee;
+  --chart-5: #818cf8;
+
+  /* Semantic Clinical Tokens */
   --med-bg: var(--background);
-  --med-bg-alt: oklch(0.08 0.005 194.878);
+  --med-bg-alt: var(--color-pure-white);
   --med-card: var(--card);
-  --med-card-sec: var(--muted);
-  --med-border: var(--border);
+  --med-card-sec: #27272a;
+  --med-border: var(--color-graphite);
   --med-text: var(--foreground);
   --med-text-muted: var(--muted-foreground);
 
   --med-primary: var(--primary);
-  --med-teal: var(--secondary);
-  --med-purple: var(--accent);
-  --med-success: var(--chart-2);
-  --med-warning: oklch(0.795 0.15 76);
+  --med-primary-dark: var(--primary-dark);
+  --med-primary-light: var(--primary-light);
+  --med-teal: var(--color-forest-grove);
+  --med-purple: var(--color-ink-black);
+  --med-success: var(--color-forest-grove);
+  --med-warning: #fbbf24;
   --med-danger: var(--destructive);
+  --med-info: var(--color-forest-grove);
 }
 
 @layer base {
@@ -96,10 +144,12 @@
     background-color: var(--med-bg);
     color: var(--med-text);
     font-family:
-      'Google Sans',
-      'Plus Jakarta Sans',
-      'Inter',
+      'Geist',
+      ui-sans-serif,
+      system-ui,
       -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
       sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
