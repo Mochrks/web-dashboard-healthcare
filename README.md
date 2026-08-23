@@ -12,20 +12,22 @@
   <img src="https://skillicons.dev/icons?i=vue,tailwind,typescript,pinia,vite" alt="Tech Stack" />
 </p>
 
-## 📋 Project Description
+##  Project Description
 
 A premium, production-quality intelligent **Healthcare Operations, Diagnostics, and Patient Telemetry Dashboard UI** styled as a futuristic clinical control center. Built using Vue 3, Vite, Tailwind CSS 4, Pinia, TypeScript, and Lucide icons, it delivers real-time clinical metrics, AI-powered diagnostic summaries, telemedicine tools, bed and surgical schedules, and interactive charts for smart hospital administrators and chief medical officers.
 
-## ✨ Key Features
+##  Key Features
 
-- 🏥 **Real-time Patient Telemetry**: Dynamic patient vitals tracking with real-time simulated telemetry feeds and visual alert metrics.
-- 🧠 **AI Diagnostics & Insights**: Advanced AI-powered clinical diagnosis summaries, imaging reports, and predictive patient risk analytics.
-- 🛏️ **Hospital Operations Control Center**: Comprehensive operational sub-systems covering bed allocation, surgery management, emergency room occupancy, and pharmacy inventories.
-- 🌓 **Slate Alabaster Theme Engine**: Immersive high-tech dark mode and Alabaster light mode with local storage persistence and custom system theme tracking.
-- 📊 **Dynamic Visualization**: Responsive statistics tracking using SVG clinical grids and highly optimized charting blocks.
-- 🛠️ **Enterprise Dev Tooling**: Pre-configured Prettier styling, Husky git commit hooks, and Commitlint conventional commit checkers.
+### Studio Experience
 
-## 🚀 Tech Stack
+- **High-Fidelity Capture**: Real-time webcam integration with countdown timers, flash effects, and grid support.
+- **20+ Designer Layouts**: A wide variety of templates ranging from "Wedding Elegance" to "Neo Tokyo" and "Spotify Viral".
+- **Advanced Pro Editor**:
+  - **Presets/Filters**: 10+ professional color-grade presets.
+  - **Adjustments**: Precise control over Brightness, Contrast, Saturation, Sharpness, Vignette, and more.
+- **Live Preview**: Real-time canvas rendering of selected layouts and effects.
+
+##  Tech Stack
 
 - **Vue 3** (Composition API, `<script setup>`)
 - **Tailwind CSS 4** (Modern CSS variables first compiler)
@@ -34,7 +36,7 @@ A premium, production-quality intelligent **Healthcare Operations, Diagnostics, 
 - **Vue Router 4** (Fully structured nested clinical module routing)
 - **Vite** (Next-generation high-speed build system)
 
-## ⚙️ Quality Assurance Dev Tooling
+##  Quality Assurance Dev Tooling
 
 To ensure elite, production-quality code, this project has comprehensive pre-commit testing configured:
 
@@ -43,12 +45,12 @@ To ensure elite, production-quality code, this project has comprehensive pre-com
 - **Commitlint:** Validates commit message structure (e.g. `feat: ...`, `fix: ...`) to keep changelogs clean.
 - **Lint-staged:** Formats only code that you have changed on pre-commit, keeping git logs rapid.
 
-## 🔧 Prerequisites
+##  Prerequisites
 
 - **Node.js** (v18 or later)
 - **npm** (v9 or later)
 
-## 🛠️ Installation
+##  Installation
 
 1. **Clone the repository**
 
